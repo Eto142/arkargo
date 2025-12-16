@@ -1,4 +1,3 @@
-
 {{-- resources/views/contact.blade.php --}}
 @include('home.header')
 
@@ -10,12 +9,20 @@
     </div>
 </section>
 
-<!-- Contact Content -->
-<section class="contact-content py-5">
+<!-- Contact Content with Map Background -->
+<section class="contact-content position-relative py-5">
+    <!-- Map as background -->
+    <div class="map-background position-absolute top-0 start-0 w-100 h-100" style="z-index: -1;">
+        <iframe 
+            src="https://www.google.com/maps?q=Kuala%20Lumpur%20International%20Airport&output=embed" 
+            width="100%" height="100%" style="border:0; filter: brightness(0.6);" loading="lazy">
+        </iframe>
+    </div>
+
     <div class="container">
-        <div class="row g-4">
+        <div class="row justify-content-center">
             <!-- Contact Form -->
-            <div class="col-md-6">
+            <div class="col-md-8">
                 @if(session('success'))
                     <div class="alert alert-success">{{ session('success') }}</div>
                 @endif
@@ -30,8 +37,8 @@
                     </div>
                 @endif
 
-                <div class="card shadow-sm">
-                    <div class="card-header bg-light"><strong>Send us a message</strong></div>
+                <div class="card shadow-sm bg-light">
+                    <div class="card-header"><strong>Send us a message</strong></div>
                     <div class="card-body">
                         <form method="POST" action="{{ route('contact.submit') }}">
                             @csrf
@@ -44,11 +51,7 @@
                                     <label class="form-label">Email Address</label>
                                     <input type="email" name="email" class="form-control" value="{{ old('email') }}" required>
                                 </div>
-                                <div class="col-md-6">
-                                    <label class="form-label">Phone</label>
-                                    <input type="text" name="phone" class="form-control" value="{{ old('phone') }}">
-                                </div>
-                                <div class="col-md-6">
+                                <div class="col-12">
                                     <label class="form-label">Subject</label>
                                     <select name="subject" class="form-select" required>
                                         <option value="">Select subject</option>
@@ -69,72 +72,22 @@
                         </form>
                     </div>
                 </div>
-            </div>
 
-            <!-- Offices & Map -->
-            <div class="col-md-6">
-                <div class="card shadow-sm mb-4">
-                    <div class="card-header bg-light"><strong>Our Worldwide Offices</strong></div>
-                    <div class="card-body">
-                        <select class="form-select mb-3" id="officeSelect" onchange="changeOffice()">
-                            <option value="">Select Country</option>
-                            <option value="MY">Malaysia</option>
-                            <option value="SG">Singapore</option>
-                            <option value="GB">United Kingdom</option>
-                            <option value="US">United States</option>
-                            <option value="AE">United Arab Emirates</option>
-                        </select>
-                        <div id="officeDetails" class="small text-muted">
-                            Select a country to view office details.
-                        </div>
+                <!-- Offices Info -->
+                <div class="card shadow-sm mt-4 bg-light">
+                    <div class="card-header"><strong>Our Offices</strong></div>
+                    <div class="card-body small text-muted">
+                        <p>Arkargo Malaysia<br>Email: info.my@arkargo.com</p>
+                        <p>Arkargo Singapore<br>Email: info.sg@arkargo.com</p>
+                        <p>Arkargo UK<br>Email: info.uk@arkargo.com</p>
+                        <p>Arkargo USA<br>Email: info.us@arkargo.com</p>
+                        <p>Arkargo UAE<br>Email: info.ae@arkargo.com</p>
                     </div>
                 </div>
 
-                <div class="map-container shadow-sm" style="height:320px;">
-                    <iframe id="officeMap"
-                        src="https://www.google.com/maps?q=Kuala%20Lumpur%20International%20Airport&output=embed"
-                        width="100%" height="100%" style="border:0" loading="lazy"></iframe>
-                </div>
             </div>
         </div>
     </div>
 </section>
 
-<script>
-function changeOffice() {
-    const map = document.getElementById('officeMap');
-    const details = document.getElementById('officeDetails');
-    const value = document.getElementById('officeSelect').value;
-
-    const offices = {
-        MY: {
-            map: 'Kuala Lumpur International Airport',
-            text: 'Arkargo Malaysia\nEmail: info.my@arkargo.com\nPhone: +60 3 0000 0000'
-        },
-        SG: {
-            map: 'Singapore Changi Airport',
-            text: 'Arkargo Singapore\nEmail: info.sg@arkargo.com\nPhone: +65 6000 0000'
-        },
-        GB: {
-            map: 'London Heathrow Airport',
-            text: 'Arkargo UK\nEmail: info.uk@arkargo.com\nPhone: +44 20 0000 0000'
-        },
-        US: {
-            map: 'JFK International Airport',
-            text: 'Arkargo USA\nEmail: info.us@arkargo.com\nPhone: +1 212 000 0000'
-        },
-        AE: {
-            map: 'Dubai International Airport',
-            text: 'Arkargo UAE\nEmail: info.ae@arkargo.com\nPhone: +971 4 000 0000'
-        }
-    };
-
-    if (offices[value]) {
-        map.src = `https://www.google.com/maps?q=${encodeURIComponent(offices[value].map)}&output=embed`;
-        details.innerText = offices[value].text;
-    }
-}
-</script>
-
 @include('home.footer')
-
