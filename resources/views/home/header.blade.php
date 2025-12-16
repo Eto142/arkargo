@@ -659,7 +659,7 @@
                             E-SERVICES
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="{{ url('book') }}">Book Cargo</a></li>
+                            <li><a class="dropdown-item" href="{{ url('contact') }}">Book Cargo</a></li>
                             <li><a class="dropdown-item" href="{{ route('shipment.track.form') }}">Track Shipment</a></li>
                         </ul>
                     </li>
