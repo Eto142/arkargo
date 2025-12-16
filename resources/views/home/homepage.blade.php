@@ -3,7 +3,7 @@
     <div id="heroCarousel" class="carousel slide hero-carousel" data-bs-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img src="{{ asset('assets/images/air-cargo1.webp') }}" alt="MASkargo Aircraft">
+                <img src="{{ asset('assets/images/air-cargo1.webp') }}" alt="Arkargo Aircraft">
                 <div class="carousel-caption">
                     <h1>Keeps business moving!</h1>
                 </div>
@@ -331,7 +331,7 @@
                         <div class="row g-4">
                             <div class="col-md-6">
                                 <div class="highlight-card">
-                                    <img src="/images/screenshot-202025-12-15-20160503.png" alt="Singapore to Kuala Lumpur Route">
+                                    <img src="{{ asset('assets/images/plane.avif') }}" alt="Singapore to Kuala Lumpur Route">
                                     <div class="highlight-card-body">
                                         <h3>Fly your goods from SIN to KUL from SGD 0.35 per kg</h3>
                                         <p>Take advantage of our competitive rates for shipments between Singapore and Kuala Lumpur. Book now on CargoAI platform.</p>
@@ -340,10 +340,10 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="highlight-card">
-                                    <img src="/images/screenshot-202025-12-15-20160503.png" alt="Chen Xing and Xiao Yue">
+                                    <img src="{{ asset('assets/images/travel.webp') }}" alt="Chen Xing and Xiao Yue">
                                     <div class="highlight-card-body">
-                                        <h3>A proud flight for the nation: MASkargo brings Chen Xing & Xiao Yue to Malaysia</h3>
-                                        <p>MASkargo successfully transported the beloved giant pandas to their new home in Malaysia, marking a significant moment in wildlife conservation.</p>
+                                        <h3>A proud flight for the nation: Arkargo brings Chen Xing & Xiao Yue to Malaysia</h3>
+                                        <p>Arkargo successfully transported the beloved giant pandas to their new home in Malaysia, marking a significant moment in wildlife conservation.</p>
                                     </div>
                                 </div>
                             </div>
@@ -366,12 +366,12 @@
             <div class="services-header">
                 <h4>WE SPECIALIZE IN CARGO SHIPPING</h4>
                 <h2>Manage Your Complex Logistics<br>So You Can Focus</h2>
-                <p>MASkargo is the world's leading global logistics provider. We support industry and trade in the global exchange of goods through air transport, ensuring efficiency and reliability at every step.</p>
+                <p>Arkargo is the world's leading global logistics provider. We support industry and trade in the global exchange of goods through air transport, ensuring efficiency and reliability at every step.</p>
             </div>
             <div class="row g-4">
                 <div class="col-md-4">
                     <div class="service-card">
-                        <img src="/placeholder.svg?height=350&width=400" alt="Global Mail Service">
+                        <img src="{{ asset('assets/images/global-mail.avif') }}" alt="Global Mail Service">
                         <div class="service-card-overlay">
                             <i class="bi bi-airplane"></i>
                             <h3>GLOBAL MAIL</h3>
@@ -380,7 +380,7 @@
                 </div>
                 <div class="col-md-4">
                     <div class="service-card">
-                        <img src="/placeholder.svg?height=350&width=400" alt="Charter Services">
+                        <img src="{{ asset('assets/images/Charter-Services.avif') }}" alt="Charter Services">
                         <div class="service-card-overlay">
                             <i class="bi bi-truck"></i>
                             <h3>CHARTER SERVICES</h3>
@@ -389,7 +389,7 @@
                 </div>
                 <div class="col-md-4">
                     <div class="service-card">
-                        <img src="/placeholder.svg?height=350&width=400" alt="MH Centigrade">
+                        <img src="{{ asset('assets/images/img1.jpg') }}" alt="MH Centigrade">
                         <div class="service-card-overlay">
                             <i class="bi bi-thermometer-snow"></i>
                             <h3>MH° CENTIGRADE</h3>
@@ -398,7 +398,7 @@
                 </div>
                 <div class="col-md-4">
                     <div class="service-card">
-                        <img src="/placeholder.svg?height=350&width=400" alt="Halal Logistics">
+                        <img src="{{ asset('assets/images/img2.jpg') }}" alt="Halal Logistics">
                         <div class="service-card-overlay">
                             <i class="bi bi-award"></i>
                             <h3>HALAL LOGISTICS</h3>
@@ -407,16 +407,16 @@
                 </div>
                 <div class="col-md-4">
                     <div class="service-card">
-                        <img src="/placeholder.svg?height=350&width=400" alt="MASkargo Logistics">
+                        <img src="{{ asset('assets/images/airport.avif') }}" alt="Arkargo Logistics">
                         <div class="service-card-overlay">
                             <i class="bi bi-boxes"></i>
-                            <h3>MASKARGO LOGISTICS</h3>
+                            <h3>Arkargo LOGISTICS</h3>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="service-card">
-                        <img src="/placeholder.svg?height=350&width=400" alt="More Services">
+                        <img src="{{ asset('assets/images/services.avif') }}" alt="More Services">
                         <div class="service-card-overlay">
                             <i class="bi bi-grid"></i>
                             <h3>VIEW ALL SERVICES</h3>
@@ -435,7 +435,7 @@
                     <div class="contact-box">
                         <h3>OUR WORLDWIDE OFFICES</h3>
                         <h2>Contact us</h2>
-                        <p>Our global teams are standing by to assist. Get in touch with your nearest MASkargo office below.</p>
+                        <p>Our global teams are standing by to assist. Get in touch with your nearest Arkargo office below.</p>
                         <select class="form-select">
                             <option value="">- Select Country -</option>
                             <option value="MY">Malaysia</option>
@@ -478,13 +478,13 @@
                         <div class="row g-4">
                             <div class="col-md-4">
                                 <div class="announcement-card">
-                                    <h3>MASkargo Welcomes Henan Province delegation in honour of hosting Mr. Sun...</h3>
+                                    <h3>Arkargo Welcomes Henan Province delegation in honour of hosting Mr. Sun...</h3>
                                     <p class="date">Tuesday, 22 April 2025</p>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="announcement-card">
-                                    <h3>MASkargo, Qatar Airways Cargo to Launch a Global Cargo Joint Venture</h3>
+                                    <h3>Arkargo, Qatar Airways Cargo to Launch a Global Cargo Joint Venture</h3>
                                     <p class="date">Tuesday, 22 April 2025</p>
                                 </div>
                             </div>
@@ -515,7 +515,7 @@
                             </div>
                             <div class="col-md-4">
                                 <div class="announcement-card">
-                                    <h3>Latest updates and news from MASkargo operations worldwide</h3>
+                                    <h3>Latest updates and news from Arkargo operations worldwide</h3>
                                     <p class="date">Check back for regular updates</p>
                                 </div>
                             </div>

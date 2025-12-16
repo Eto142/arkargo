@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home - MASkargo</title>
+    <title>Home - Arkargo</title>
     
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -637,7 +637,7 @@
     <nav class="navbar navbar-expand-lg">
         <div class="container">
             <a class="navbar-brand" href="/">
-                <img src="https://www.maskargo.com/wp-content/uploads/2024/03/logo-small.png" alt="MASkargo Logo">
+                <img src="{{ asset('assets/images/logo.png') }}" alt="Arkargo Logo">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
@@ -649,9 +649,9 @@
                             ABOUT US
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Company Profile</a></li>
-                            <li><a class="dropdown-item" href="#">Leadership</a></li>
-                            <li><a class="dropdown-item" href="#">Awards</a></li>
+                            <li><a class="dropdown-item" href="{{ url('about') }}">About us</a></li>
+                            {{-- <li><a class="dropdown-item" href="#">Leadership</a></li>
+                            <li><a class="dropdown-item" href="#">Awards</a></li> --}}
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
@@ -668,11 +668,11 @@
                             PRODUCTS
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">General Cargo</a></li>
-                            <li><a class="dropdown-item" href="#">Special Cargo</a></li>
+                            <li><a class="dropdown-item" href="{{ url('general') }}">General Cargo</a></li>
+                            <li><a class="dropdown-item" href="{{ url('special') }}">Special Cargo</a></li>
                         </ul>
                     </li>
-                    <li class="nav-item dropdown">
+                    {{-- <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
                             NETWORK
                         </a>
@@ -680,7 +680,7 @@
                             <li><a class="dropdown-item" href="#">Route Map</a></li>
                             <li><a class="dropdown-item" href="#">Destinations</a></li>
                         </ul>
-                    </li>
+                    </li> --}}
                     {{-- <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
                             SUSTAINABILITY
@@ -695,8 +695,8 @@
                             SUPPORT
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Contact Us</a></li>
-                            <li><a class="dropdown-item" href="#">FAQ</a></li>
+                            <li><a class="dropdown-item" href="{{ url('contact') }}">Contact Us</a></li>
+                            <li><a class="dropdown-item" href="{{ url('faq') }}">FAQ</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">

@@ -3,7 +3,7 @@
     <div id="heroCarousel" class="carousel slide hero-carousel" data-bs-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img src="{{ asset('assets/images/air-cargo1.webp') }}" alt="MASkargo Aircraft">
+                <img src="{{ asset('assets/images/air-cargo1.webp') }}" alt="Arkargo Aircraft">
                 <div class="carousel-caption">
                     <h1>Keeps business moving!</h1>
                 </div>

@@ -3,11 +3,11 @@
         <div class="container">
             <div class="row g-4">
                 <div class="col-md-4">
-                    <img src="https://www.maskargo.com/wp-content/uploads/2024/03/logo-small.png" alt="MASkargo Logo" style="height: 60px; margin-bottom: 20px;">
-                    <h4>MAB KARGO SDN BHD</h4>
+                    <img src="{{ asset('assets/images/logo.png') }}" alt="Arkargo Logo" style="height: 60px; margin-bottom: 20px;">
+                    <h4>Arkargo</h4>
                     <p>1M Floor, Core 2, Advanced Cargo Centre Kuala Lumpur International Airport, 64000, Sepang Selangor, Malaysia</p>
-                    <p><strong>Office Hour:</strong> info.maskargo@malaysiaairlines.com</p>
-                    <p><strong>After Office Hour:</strong> dutymgr@malaysiaairlines.com</p>
+                    <p><strong>Office Hour:</strong>support@arkargo.org</p>
+                    <p><strong>After Office Hour:</strong> support@arkargo.org</p>
                 </div>
                 <div class="col-md-2">
                     <h4>E-services</h4>
@@ -20,7 +20,7 @@
                 <div class="col-md-2">
                     <h4>Products</h4>
                     <ul>
-                        <li><a href="#">MASkargo SEND</a></li>
+                        <li><a href="#">Arkargo SEND</a></li>
                         <li><a href="#">MH° Centigrade</a></li>
                         <li><a href="#">Halal Logistics</a></li>
                         <li><a href="#">MASLift</a></li>
@@ -39,7 +39,7 @@
                     <ul>
                         <li><a href="#">Global Mail</a></li>
                         <li><a href="#">Charters</a></li>
-                        <li><a href="#">MASkargo Logistics</a></li>
+                        <li><a href="#">Arkargo Logistics</a></li>
                     </ul>
                 </div>
             </div>
@@ -64,7 +64,7 @@
             </div>
             
             <div class="footer-bottom">
-                <p>MABKARGO SDN BHD © Copyright 2025 201501033990 (1159310-T)</p>
+                <p>Arkargo © Copyright 2025</p>
                 <div class="footer-links">
                     <a href="#">Legal Notice</a>
                     <span>•</span>
