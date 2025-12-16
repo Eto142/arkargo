@@ -29,41 +29,7 @@ class AdminDashboardController extends Controller
             'recentShipments'
         ));
     }
-    /**
-     * View all shipments
-     */
-    public function shipments()
-    {
-        $shipments = Shipment::latest()->paginate(20);
-        return view('admin.shipments.index', compact('shipments'));
-    }
-
-    /**
-     * View single shipment
-     */
-    public function showShipment($id)
-    {
-        $shipment = Shipment::findOrFail($id);
-        return view('admin.shipments.show', compact('shipment'));
-    }
-
-    /**
-     * Update shipment status
-     */
-    public function updateStatus(Request $request, $id)
-    {
-        $request->validate([
-            'status' => 'required|in:Booked,In Transit,Delivered,Cancelled',
-        ]);
-
-        $shipment = Shipment::findOrFail($id);
-        $shipment->update([
-            'status' => $request->status,
-        ]);
-
-        return back()->with('success', 'Shipment status updated successfully.');
-    }
-
+  
     /**
      * Admin logout
      */
