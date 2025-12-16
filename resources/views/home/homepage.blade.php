@@ -32,10 +32,18 @@
     <!-- Tab Section -->
     <div class="container tab-section">
         <div class="tab-buttons">
-            <button class="tab-btn" onclick="showTab('book-cargo')">
+
+            {{-- <button class="tab-btn" onclick="showTab('book-cargo')">
                 <i class="bi bi-box-seam"></i>
                 <span>Book Cargo</span>
-            </button>
+            </button> --}}
+
+            <button class="tab-btn" onclick="window.location='{{ url('contact') }}'">
+    <i class="bi bi-box-seam"></i>
+    <span>Book Cargo</span>
+</button>
+
+
             <button class="tab-btn" onclick="showTab('tracking')">
                 <i class="bi bi-geo-alt"></i>
                 <span>Shipment Tracking</span>
