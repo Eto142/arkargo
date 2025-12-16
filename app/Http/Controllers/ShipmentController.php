@@ -123,7 +123,7 @@ public function store(Request $request)
     
 
     // Pass AWB number and PDF path to modal
-    return redirect()->route('shipment.track.form')
+    return redirect()->route('admin.book')
         ->with([
             'success' => 'Shipment booked successfully.',
             'awb_number' => $shipment->awb_number,

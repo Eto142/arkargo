@@ -558,6 +558,17 @@
                     <span class="nav-text">Dashboard</span>
                 </a>
             </div>
+
+
+             <div class="nav-item">
+                <a href="{{ route('admin.book') }}" class="nav-link">
+                    <i class="bi bi-box-seam nav-icon"></i>
+                    <span class="nav-text">Book Cargo</span>
+                    {{-- <span class="badge bg-danger ms-auto">5</span> --}}
+                </a>
+            </div>
+
+
             <div class="nav-item">
                 <a href="{{ route('admin.shipments') }}" class="nav-link">
                     <i class="bi bi-box-seam nav-icon"></i>

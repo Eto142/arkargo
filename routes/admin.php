@@ -17,6 +17,7 @@ Route::middleware('web')->prefix('admin')->name('admin.')->group(function () {
     Route::middleware('auth:admin')->group(function () {
         Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('dashboard');
         Route::get('/shipments', [AdminShipmentController::class, 'index'])->name('shipments');
+        Route::get('/book', [AdminShipmentController::class, 'bookcargo'])->name('book');
         Route::get('/shipments/{shipment}', [AdminShipmentController::class, 'show'])->name('shipments.show');
         Route::post('/shipments/{shipment}/status', [AdminShipmentController::class, 'updateStatus'])->name('shipments.status');
     });

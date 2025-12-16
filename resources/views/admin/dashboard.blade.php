@@ -109,9 +109,9 @@
         <div class="quick-actions">
             <h5>Quick Actions</h5>
             <div class="action-grid">
-                <a href="#" class="action-btn">
+                <a href="{{ route('admin.book') }}" class="action-btn">
                     <i class="bi bi-plus-circle"></i>
-                    <span>New Shipment</span>
+                    <span>Book Cargo</span>
                 </a>
                 <a href="#" class="action-btn">
                     <i class="bi bi-file-earmark-text"></i>
@@ -121,9 +121,9 @@
                     <i class="bi bi-printer"></i>
                     <span>Print Labels</span>
                 </a>
-                <a href="#" class="action-btn">
+                <a href="{{ route('admin.send.email') }}" class="action-btn">
                     <i class="bi bi-envelope"></i>
-                    <span>Send Alerts</span>
+                    <span>Send Email</span>
                 </a>
             </div>
         </div>

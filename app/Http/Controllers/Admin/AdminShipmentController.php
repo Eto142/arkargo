@@ -10,6 +10,15 @@ class AdminShipmentController extends Controller
 {
     //
 
+
+
+      public function bookcargo()
+    {
+        $shipments = Shipment::latest()->paginate(20);
+        return view('admin.shipments.book', compact('shipments'));
+    }
+
+
       /**
      * View all shipments
      */
