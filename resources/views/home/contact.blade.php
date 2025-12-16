@@ -20,9 +20,9 @@
     </div>
 
     <div class="container">
-        <div class="row justify-content-center">
-            <!-- Contact Form -->
-            <div class="col-md-8">
+        <div class="row g-4">
+            <!-- Contact Form (full width on laptop, stacked on mobile) -->
+            <div class="col-12 col-lg-10 mx-lg-auto">
                 @if(session('success'))
                     <div class="alert alert-success">{{ session('success') }}</div>
                 @endif
@@ -51,7 +51,7 @@
                                     <label class="form-label">Email Address</label>
                                     <input type="email" name="email" class="form-control" value="{{ old('email') }}" required>
                                 </div>
-                                <div class="col-12">
+                                <div class="col-12 col-md-6">
                                     <label class="form-label">Subject</label>
                                     <select name="subject" class="form-select" required>
                                         <option value="">Select subject</option>
@@ -70,18 +70,6 @@
                                 </div>
                             </div>
                         </form>
-                    </div>
-                </div>
-
-                <!-- Offices Info -->
-                <div class="card shadow-sm mt-4 bg-light">
-                    <div class="card-header"><strong>Our Offices</strong></div>
-                    <div class="card-body small text-muted">
-                        <p>Arkargo Malaysia<br>Email: info.my@arkargo.com</p>
-                        <p>Arkargo Singapore<br>Email: info.sg@arkargo.com</p>
-                        <p>Arkargo UK<br>Email: info.uk@arkargo.com</p>
-                        <p>Arkargo USA<br>Email: info.us@arkargo.com</p>
-                        <p>Arkargo UAE<br>Email: info.ae@arkargo.com</p>
                     </div>
                 </div>
 
