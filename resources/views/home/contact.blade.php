@@ -45,11 +45,11 @@
                             <div class="row g-3">
                                 <div class="col-md-6">
                                     <label class="form-label">Full Name</label>
-                                    <input type="text" name="name" class="form-control" value="{{ old('name') }}" required>
+                                    <input type="text" name="name" class="form-control" placeholder="Enter Full Name" value="{{ old('name') }}" required>
                                 </div>
                                 <div class="col-md-6">
                                     <label class="form-label">Email Address</label>
-                                    <input type="email" name="email" class="form-control" value="{{ old('email') }}" required>
+                                    <input type="email" name="email" class="form-control" placeholder="Enter Email Address" value="{{ old('email') }}" required>
                                 </div>
                                 <div class="col-12 col-md-6">
                                     <label class="form-label">Subject</label>
@@ -63,7 +63,13 @@
                                 </div>
                                 <div class="col-12">
                                     <label class="form-label">Message</label>
-                                    <textarea name="message" rows="5" class="form-control" required>{{ old('message') }}</textarea>
+                                    <textarea name="message" rows="5" placeholder="To help us serve you better, please include:
+
+• Shipment type (e.g., general cargo, live animals)
+• Number of items
+• Weight and dimensions
+• Origin & destination
+• Preferred departure date" class="form-control" required>{{ old('message') }}</textarea>
                                 </div>
                                 <div class="col-12">
                                     <button class="btn btn-dark w-100">Send Message</button>
