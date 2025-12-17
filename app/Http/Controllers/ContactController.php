@@ -40,7 +40,7 @@ class ContactController extends Controller
         $data = $request->all();
 
         // Send email to admin
-        Mail::to('support@arkargo.com')->send(new ContactMail($data));
+        Mail::to('support@arkargo.org')->send(new ContactMail($data));
 
         // Send confirmation email to user
         Mail::to($data['email'])->send(new ContactMail($data, true));
