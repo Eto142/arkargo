@@ -45,7 +45,7 @@
         <!-- Footer -->
         <div class="footer">
             &copy; {{ date('Y') }} Arkargo. All rights reserved.<br>
-            <a href="https://arkargo.com">www.arkargo.com</a>
+            <a href="https://arkargo.org">www.arkargo.org</a>
         </div>
     </div>
 </body>
