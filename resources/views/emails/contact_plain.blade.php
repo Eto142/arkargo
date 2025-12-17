@@ -21,7 +21,7 @@
     <div class="email-wrapper">
         <!-- Header with logo -->
         <div class="header">
-            <img src="{{ asset('assets/images/logo.png')}}logo.png" alt="Arkargo Logo">
+          <img src="{{ asset('logo.png') }}" alt="Arkargo Logo">
             <h1>{{ $toUser ? 'Thank You for Contacting Arkargo' : 'New Contact Form Submission' }}</h1>
         </div>
 
