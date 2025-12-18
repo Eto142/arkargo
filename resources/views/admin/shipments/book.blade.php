@@ -32,6 +32,14 @@
             <h5 class="section-title">Shipment Details</h5>
 
             <div class="row g-3">
+
+                div class="col-md-4">
+                    <label class="form-label">Cargo Tracking NO</label>
+                    <input type="text" name="awb_number" class="form-control" required>
+                </div>
+
+
+
                 <div class="col-md-4">
                     <label class="form-label">Origin</label>
                     <input type="text" name="origin" class="form-control" required>

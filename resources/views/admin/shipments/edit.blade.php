@@ -39,27 +39,35 @@
             <h5 class="section-title">Shipment Details</h5>
 
             <div class="row g-3">
+
+
+                 <div class="col-md-4">
+                    <label class="form-label">Cargo Tracking NO</label>
+                    <input type="text" name="awb_number" class="form-control"
+                           value="{{ old('awb_number', $shipment->awb_number) }}" >
+                </div>
+
                 <div class="col-md-4">
                     <label class="form-label">Origin</label>
                     <input type="text" name="origin" class="form-control"
-                           value="{{ old('origin', $shipment->origin) }}" required>
+                           value="{{ old('origin', $shipment->origin) }}" >
                 </div>
 
                 <div class="col-md-4">
                     <label class="form-label">Destination</label>
                     <input type="text" name="destination" class="form-control"
-                           value="{{ old('destination', $shipment->destination) }}" required>
+                           value="{{ old('destination', $shipment->destination) }}" >
                 </div>
 
                 <div class="col-md-4">
                     <label class="form-label">Shipment Date</label>
                     <input type="date" name="shipment_date" class="form-control"
-                           value="{{ old('shipment_date', $shipment->shipment_date) }}" required>
+                           value="{{ old('shipment_date', $shipment->shipment_date) }}" >
                 </div>
 
                 <div class="col-md-3">
                     <label class="form-label">Shipment Type</label>
-                    <select name="shipment_type" class="form-select" required>
+                    <select name="shipment_type" class="form-select" >
                         @foreach(['Document','Non-Document','Commercial'] as $type)
                             <option value="{{ $type }}"
                                 {{ old('shipment_type', $shipment->shipment_type) == $type ? 'selected' : '' }}>
@@ -103,7 +111,7 @@
                 <div class="col-md-4">
                     <label class="form-label">Shipper Company</label>
                     <input name="shipper_company" class="form-control"
-                           value="{{ old('shipper_company', $shipment->shipper_company) }}" required>
+                           value="{{ old('shipper_company', $shipment->shipper_company) }}" >
                 </div>
 
                 <div class="col-md-4">
@@ -115,37 +123,37 @@
                 <div class="col-md-4">
                     <label class="form-label">Contact Person</label>
                     <input name="shipper_contact" class="form-control"
-                           value="{{ old('shipper_contact', $shipment->shipper_contact) }}" required>
+                           value="{{ old('shipper_contact', $shipment->shipper_contact) }}" >
                 </div>
 
                 <div class="col-md-4">
                     <label class="form-label">Address</label>
                     <input name="shipper_address" class="form-control"
-                           value="{{ old('shipper_address', $shipment->shipper_address) }}" required>
+                           value="{{ old('shipper_address', $shipment->shipper_address) }}" >
                 </div>
 
                 <div class="col-md-2">
                     <label class="form-label">City</label>
                     <input name="shipper_city" class="form-control"
-                           value="{{ old('shipper_city', $shipment->shipper_city) }}" required>
+                           value="{{ old('shipper_city', $shipment->shipper_city) }}" >
                 </div>
 
                 <div class="col-md-2">
                     <label class="form-label">Country</label>
                     <input name="shipper_country" class="form-control"
-                           value="{{ old('shipper_country', $shipment->shipper_country) }}" required>
+                           value="{{ old('shipper_country', $shipment->shipper_country) }}" >
                 </div>
 
                 <div class="col-md-2">
                     <label class="form-label">Phone</label>
                     <input name="shipper_phone" class="form-control"
-                           value="{{ old('shipper_phone', $shipment->shipper_phone) }}" required>
+                           value="{{ old('shipper_phone', $shipment->shipper_phone) }}" >
                 </div>
 
                 <div class="col-md-2">
                     <label class="form-label">Origin Airport</label>
                     <input name="origin_airport" class="form-control"
-                           value="{{ old('origin_airport', $shipment->origin_airport) }}" required>
+                           value="{{ old('origin_airport', $shipment->origin_airport) }}" >
                 </div>
             </div>
         </div>
@@ -158,37 +166,37 @@
                 <div class="col-md-4">
                     <label class="form-label">Receiver Company</label>
                     <input name="receiver_company" class="form-control"
-                           value="{{ old('receiver_company', $shipment->receiver_company) }}" required>
+                           value="{{ old('receiver_company', $shipment->receiver_company) }}" >
                 </div>
 
                 <div class="col-md-4">
                     <label class="form-label">Receiver Contact</label>
                     <input name="receiver_contact" class="form-control"
-                           value="{{ old('receiver_contact', $shipment->receiver_contact) }}" required>
+                           value="{{ old('receiver_contact', $shipment->receiver_contact) }}" >
                 </div>
 
                 <div class="col-md-4">
                     <label class="form-label">Receiver Address</label>
                     <input name="receiver_address" class="form-control"
-                           value="{{ old('receiver_address', $shipment->receiver_address) }}" required>
+                           value="{{ old('receiver_address', $shipment->receiver_address) }}" >
                 </div>
 
                 <div class="col-md-2">
                     <label class="form-label">City</label>
                     <input name="receiver_city" class="form-control"
-                           value="{{ old('receiver_city', $shipment->receiver_city) }}" required>
+                           value="{{ old('receiver_city', $shipment->receiver_city) }}" >
                 </div>
 
                 <div class="col-md-2">
                     <label class="form-label">Country</label>
                     <input name="receiver_country" class="form-control"
-                           value="{{ old('receiver_country', $shipment->receiver_country) }}" required>
+                           value="{{ old('receiver_country', $shipment->receiver_country) }}" >
                 </div>
 
                 <div class="col-md-2">
                     <label class="form-label">Destination Airport</label>
                     <input name="destination_airport" class="form-control"
-                           value="{{ old('destination_airport', $shipment->destination_airport) }}" required>
+                           value="{{ old('destination_airport', $shipment->destination_airport) }}" >
                 </div>
             </div>
         </div>
@@ -201,25 +209,25 @@
                 <div class="col-md-2">
                     <label class="form-label">Pieces</label>
                     <input name="pieces" type="number" class="form-control"
-                           value="{{ old('pieces', $shipment->pieces) }}" required>
+                           value="{{ old('pieces', $shipment->pieces) }}" >
                 </div>
 
                 <div class="col-md-2">
                     <label class="form-label">Gross Weight</label>
                     <input name="gross_weight" type="number" class="form-control"
-                           value="{{ old('gross_weight', $shipment->gross_weight) }}" required>
+                           value="{{ old('gross_weight', $shipment->gross_weight) }}" >
                 </div>
 
                 <div class="col-md-2">
                     <label class="form-label">Chargeable Weight</label>
                     <input name="chargeable_weight" type="number" class="form-control"
-                           value="{{ old('chargeable_weight', $shipment->chargeable_weight) }}" required>
+                           value="{{ old('chargeable_weight', $shipment->chargeable_weight) }}" >
                 </div>
 
                 <div class="col-md-4">
                     <label class="form-label">Nature of Goods</label>
                     <input name="goods_description" class="form-control"
-                           value="{{ old('goods_description', $shipment->goods_description) }}" required>
+                           value="{{ old('goods_description', $shipment->goods_description) }}" >
                 </div>
             </div>
         </div>

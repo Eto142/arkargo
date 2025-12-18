@@ -22,6 +22,7 @@ class ShipmentController extends Controller
 public function store(Request $request)
 {
     $validated = $request->validate([
+        'awb_number' => 'required|string',
         'status' => 'required|string',
         'origin' => 'required|string',
         'destination' => 'required|string',
@@ -58,7 +59,7 @@ public function store(Request $request)
     ]);
 
     // Generate unique AWB Number
-    $validated['awb_number'] = $this->generateAwb();
+    // $validated['awb_number'] = $this->generateAwb();
 
     // Create shipment
     $shipment = Shipment::create($validated);
@@ -269,30 +270,31 @@ public function update(Request $request, $id)
     $shipment = Shipment::findOrFail($id);
 
     $validated = $request->validate([
-        'origin' => 'required|string',
-        'destination' => 'required|string',
-        'shipment_date' => 'required|date',
-        'shipment_type' => 'required|string',
+         'awb_number' => 'string',
+        'origin' => 'string',
+        'destination' => 'string',
+        'shipment_date' => 'date',
+        'shipment_type' => 'string',
 
-        'shipper_company' => 'required|string',
-        'shipper_contact' => 'required|string',
-        'shipper_address' => 'required|string',
-        'shipper_city' => 'required|string',
-        'shipper_country' => 'required|string',
-        'shipper_phone' => 'required|string',
-        'origin_airport' => 'required|string',
+        'shipper_company' => 'string',
+        'shipper_contact' => 'string',
+        'shipper_address' => 'string',
+        'shipper_city' => 'string',
+        'shipper_country' => 'string',
+        'shipper_phone' => 'string',
+        'origin_airport' => 'string',
 
-        'receiver_company' => 'required|string',
-        'receiver_contact' => 'required|string',
-        'receiver_address' => 'required|string',
-        'receiver_city' => 'required|string',
-        'receiver_country' => 'required|string',
-         'destination_airport' => 'required|string',
+        'receiver_company' => 'string',
+        'receiver_contact' => 'string',
+        'receiver_address' => 'string',
+        'receiver_city' => 'string',
+        'receiver_country' => 'string',
+         'destination_airport' => 'string',
 
-        'pieces' => 'required|integer|min:1',
-        'gross_weight' => 'required|numeric',
-        'chargeable_weight' => 'required|numeric',
-        'goods_description' => 'required|string',
+        'pieces' => 'integer|min:1',
+        'gross_weight' => 'numeric',
+        'chargeable_weight' => 'numeric',
+        'goods_description' => 'string',
     ]);
 
     $shipment->update($validated);
