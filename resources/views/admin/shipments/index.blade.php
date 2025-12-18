@@ -105,15 +105,38 @@
 
                             <td>{{ $shipment->shipment_date->format('d M Y') }}</td>
 
-                            <td class="text-end">
-                                <div class="action-buttons justify-content-end">
-                                    <a href="{{ route('admin.shipments.show', $shipment->id) }}"
-                                       class="btn btn-sm btn-outline-primary btn-icon"
-                                       title="View">
-                                        <i class="bi bi-eye"></i>
-                                    </a>
-                                </div>
-                            </td>
+                             <td>
+    <div class="d-flex gap-1 flex-wrap">
+        <!-- View Shipment -->
+        <a href="{{ route('admin.shipments.show', $shipment->id) }}" 
+           class="btn btn-sm btn-primary" 
+           title="View">
+            <i class="bi bi-eye me-1"></i> View
+        </a>
+
+        <!-- Edit Shipment -->
+        <a href="{{ route('shipment.edit', $shipment->id) }}"
+           class="btn btn-sm btn-primary">
+            <i class="bi bi-pencil-square me-1"></i> Edit
+        </a>
+
+        <!-- Update Shipping History -->
+        <a href="{{ route('shipment.history.edit', $shipment->id) }}"
+           class="btn btn-sm btn-primary">
+            <i class="bi bi-clock-history me-1"></i> Update History
+        </a>
+
+        <!-- Delete Shipment -->
+        <form action="{{ route('shipment.destroy', $shipment->id) }}" method="POST"
+              onsubmit="return confirm('Are you sure you want to delete this shipment?')">
+            @csrf
+            @method('DELETE')
+            <button class="btn btn-sm btn-danger">
+                <i class="bi bi-trash me-1"></i> Delete
+            </button>
+        </form>
+    </div>
+</td>
                         </tr>
                     @empty
                         <tr>

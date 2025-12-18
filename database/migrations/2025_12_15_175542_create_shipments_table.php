@@ -35,6 +35,7 @@ return new class extends Migration
             $table->string('shipper_phone');
             $table->string('shipper_postal_code')->nullable();
             $table->string('shipper_tax_id')->nullable();
+             $table->string('origin_airport');
 
             // Receiver
             $table->string('receiver_company');
@@ -42,6 +43,7 @@ return new class extends Migration
             $table->string('receiver_address');
             $table->string('receiver_city');
             $table->string('receiver_country');
+            $table->string('destination_airport');
 
             // Cargo
             $table->unsignedInteger('pieces');

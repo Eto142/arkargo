@@ -568,23 +568,13 @@
                 <div class="system-badge">ACTIVE • REAL-TIME TRACKING</div>
             </div>
             <div class="awb-number">{{ $shipment->awb_number }}</div>
-            <div class="status-indicator">
-                <div class="status-dot 
-                    @if($shipment->status == 'Delivered') completed
-                    @elseif($shipment->status == 'In Transit') active
-                    @else pending @endif">
-                    @if($shipment->status == 'Delivered') <i class="bi bi-check"></i> @endif
-                </div>
-                <div class="status-text">
-                    @if($shipment->status == 'Booked')
-                        AWAITING PICKUP • BOOKED {{ now()->subDays(2)->format('d M') }}
-                    @elseif($shipment->status == 'In Transit')
-                        IN TRANSIT • EN ROUTE TO DESTINATION
-                    @else
-                        DELIVERED • COMPLETED
-                    @endif
-                </div>
-            </div>
+           <div class="status-indicator">
+    <div class="status-dot"></div>
+    <div class="status-text">
+        {{ $shipment->status }}
+    </div>
+</div>
+
         </div>
 
         <!-- Metrics Dashboard -->
@@ -625,31 +615,52 @@
                         <div class="panel-subtitle">CONSIGNMENT DETAILS</div>
                     </div>
                     
-                    <div class="info-grid">
-                        <!-- Shipper -->
-                        <div class="info-section">
-                            <div class="info-label">Shipper / Consignor</div>
-                            <div class="info-value strong">{{ $shipment->shipper_company }}</div>
-                            <div class="info-value">{{ $shipment->shipper_contact }}</div>
-                            <div class="info-value">{{ $shipment->shipper_address }}</div>
-                            <div class="info-value">{{ $shipment->shipper_city }}, {{ $shipment->shipper_country }}</div>
-                            @if($shipment->shipper_phone)
-                            <div class="info-value mono">{{ $shipment->shipper_phone }}</div>
-                            @endif
-                            @if($shipment->shipper_department)
-                            <div class="info-value">{{ $shipment->shipper_department }}</div>
-                            @endif
-                        </div>
+                  <div class="info-grid">
+    <!-- Shipper -->
+    <div class="info-section">
+        <div class="info-label">Shipper / Consignor</div>
+        <div class="info-value strong">
+            <span class="field-label">Company:</span> {{ $shipment->shipper_company }}
+        </div>
+        <div class="info-value">
+            <span class="field-label">Contact Person:</span> {{ $shipment->shipper_contact }}
+        </div>
+        <div class="info-value">
+            <span class="field-label">Address:</span> {{ $shipment->shipper_address }}
+        </div>
+        <div class="info-value">
+            <span class="field-label">City / Country:</span> {{ $shipment->shipper_city }}, {{ $shipment->shipper_country }}
+        </div>
+        @if($shipment->shipper_phone)
+        <div class="info-value mono">
+            <span class="field-label">Phone:</span> {{ $shipment->shipper_phone }}
+        </div>
+        @endif
+        @if($shipment->shipper_department)
+        <div class="info-value">
+            <span class="field-label">Department:</span> {{ $shipment->shipper_department }}
+        </div>
+        @endif
+    </div>
 
-                        <!-- Receiver -->
-                        <div class="info-section">
-                            <div class="info-label">Consignee / Receiver</div>
-                            <div class="info-value strong">{{ $shipment->receiver_company }}</div>
-                            <div class="info-value">{{ $shipment->receiver_contact }}</div>
-                            <div class="info-value">{{ $shipment->receiver_address }}</div>
-                            <div class="info-value">{{ $shipment->receiver_city }}, {{ $shipment->receiver_country }}</div>
-                        </div>
-                    </div>
+    <!-- Receiver -->
+    <div class="info-section">
+        <div class="info-label">Consignee / Receiver</div>
+        <div class="info-value strong">
+            <span class="field-label">Company:</span> {{ $shipment->receiver_company }}
+        </div>
+        <div class="info-value">
+            <span class="field-label">Contact Person:</span> {{ $shipment->receiver_contact }}
+        </div>
+        <div class="info-value">
+            <span class="field-label">Address:</span> {{ $shipment->receiver_address }}
+        </div>
+        <div class="info-value">
+            <span class="field-label">City / Country:</span> {{ $shipment->receiver_city }}, {{ $shipment->receiver_country }}
+        </div>
+    </div>
+</div>
+
 
                     <div class="info-divider"></div>
 
@@ -692,24 +703,24 @@
                             <tr>
                                 <th>ITEM</th>
                                 <th>SPECIFICATION</th>
-                                <th>REMARKS</th>
+                                {{-- <th>REMARKS</th> --}}
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
                                 <td>Handling</td>
                                 <td>Temperature Controlled</td>
-                                <td>Maintain 15-25°C</td>
+                                {{-- <td>Maintain 15-25°C</td> --}}
                             </tr>
                             <tr>
                                 <td>Security</td>
                                 <td>High Value Cargo</td>
-                                <td>Requires Secure Storage</td>
+                                {{-- <td>Requires Secure Storage</td> --}}
                             </tr>
                             <tr>
                                 <td>Documentation</td>
                                 <td>Commercial Invoice Attached</td>
-                                <td>Customs Cleared</td>
+                                {{-- <td>Customs Cleared</td> --}}
                             </tr>
                         </tbody>
                     </table>
@@ -726,154 +737,57 @@
                     <div class="panel-subtitle">LIVE UPDATES</div>
                 </div>
 
-                <div class="timeline-container">
-                    <div class="timeline-line"></div>
-                    <div class="timeline-progress" id="timelineProgress"></div>
-                    
-                    <!-- Timeline Items -->
-                    <div class="timeline-item">
-                        <div class="timeline-dot completed">
-                            <i class="bi bi-check"></i>
-                        </div>
-                        <div class="timeline-content">
-                            <div class="timeline-title">Booking Confirmed</div>
-                            <div class="timeline-subtitle">Shipment registered in system</div>
-                            <div class="timeline-time">{{ now()->subDays(2)->format('d M Y, 09:30') }} UTC</div>
-                        </div>
-                    </div>
+               <div class="timeline-container">
+    <div class="timeline-line"></div>
+    <div class="timeline-progress" id="timelineProgress"></div>
 
-                    <div class="timeline-item">
-                        <div class="timeline-dot 
-                            @if(in_array($shipment->status, ['In Transit', 'Delivered'])) completed 
-                            @else active @endif">
-                            @if(in_array($shipment->status, ['In Transit', 'Delivered']))
-                            <i class="bi bi-check"></i>
-                            @endif
-                        </div>
-                        <div class="timeline-content">
-                            <div class="timeline-title">Pickup Completed</div>
-                            <div class="timeline-subtitle">Cargo collected from shipper</div>
-                            <div class="timeline-time">
-                                @if(in_array($shipment->status, ['In Transit', 'Delivered']))
-                                {{ now()->subDays(1)->format('d M Y, 14:15') }} UTC
-                                @else
-                                PENDING
-                                @endif
-                            </div>
-                        </div>
-                    </div>
+    @forelse($history as $item)
+    <div class="timeline-item">
+        <div class="timeline-dot 
+            @if($item->status == 'Delivered') completed 
+            @elseif($item->status == 'In Transit') active @endif">
+            @if($item->status == 'Delivered')
+            <i class="bi bi-check"></i>
+            @endif
+        </div>
+        <div class="timeline-content">
+            <div class="timeline-title">{{ $item->status }}</div>
+            <div class="timeline-subtitle">{{ $item->remarks }} - {{ $item->location }}</div>
+            <div class="timeline-time">{{ \Carbon\Carbon::parse($item->date.' '.$item->time)->format('d M Y, H:i') }} UTC</div>
+        </div>
+    </div>
+    @empty
+    <p>No tracking history available yet.</p>
+    @endforelse
+</div>
 
-                    <div class="timeline-item">
-                        <div class="timeline-dot 
-                            @if(in_array($shipment->status, ['In Transit', 'Delivered'])) completed 
-                            @elseif($shipment->status == 'Booked') active @endif">
-                            @if(in_array($shipment->status, ['In Transit', 'Delivered']))
-                            <i class="bi bi-check"></i>
-                            @endif
-                        </div>
-                        <div class="timeline-content">
-                            <div class="timeline-title">Origin Processing</div>
-                            <div class="timeline-subtitle">Security screening completed</div>
-                            <div class="timeline-time">
-                                @if(in_array($shipment->status, ['In Transit', 'Delivered']))
-                                {{ now()->subDays(1)->format('d M Y, 18:45') }} UTC
-                                @else
-                                EST: {{ now()->addDays(0)->format('d M Y') }}
-                                @endif
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="timeline-item">
-                        <div class="timeline-dot 
-                            @if($shipment->status == 'Delivered') completed 
-                            @elseif($shipment->status == 'In Transit') active @endif">
-                            @if($shipment->status == 'Delivered')
-                            <i class="bi bi-check"></i>
-                            @endif
-                        </div>
-                        <div class="timeline-content">
-                            <div class="timeline-title">In Transit</div>
-                            <div class="timeline-subtitle">Departed from origin facility</div>
-                            <div class="timeline-time">
-                                @if(in_array($shipment->status, ['In Transit', 'Delivered']))
-                                {{ now()->subHours(12)->format('d M Y, 06:30') }} UTC
-                                @else
-                                AWAITING
-                                @endif
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="timeline-item">
-                        <div class="timeline-dot 
-                            @if($shipment->status == 'Delivered') completed @endif">
-                            @if($shipment->status == 'Delivered')
-                            <i class="bi bi-check"></i>
-                            @endif
-                        </div>
-                        <div class="timeline-content">
-                            <div class="timeline-title">Customs Clearance</div>
-                            <div class="timeline-subtitle">Destination customs processing</div>
-                            <div class="timeline-time">
-                                @if($shipment->status == 'Delivered')
-                                {{ now()->subHours(6)->format('d M Y, 11:45') }} UTC
-                                @else
-                                EST: {{ now()->addDays(1)->format('d M Y') }}
-                                @endif
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="timeline-item">
-                        <div class="timeline-dot 
-                            @if($shipment->status == 'Delivered') completed active @endif">
-                            @if($shipment->status == 'Delivered')
-                            <i class="bi bi-check"></i>
-                            @endif
-                        </div>
-                        <div class="timeline-content">
-                            <div class="timeline-title">Delivery</div>
-                            <div class="timeline-subtitle">Final delivery to consignee</div>
-                            <div class="timeline-time">
-                                @if($shipment->status == 'Delivered')
-                                {{ now()->subHours(3)->format('d M Y, 14:20') }} UTC
-                                @else
-                                ETA: {{ now()->addDays(2)->format('d M Y') }}
-                                @endif
-                            </div>
-                        </div>
-                    </div>
                 </div>
 
-                <!-- Current Status -->
-                <div class="current-status">
-                    <div class="status-label">CURRENT STATUS</div>
-                    <div class="status-main">
-                        @if($shipment->status == 'Booked')
-                            AWAITING PICKUP AT ORIGIN
-                        @elseif($shipment->status == 'In Transit')
-                            IN TRANSIT • EN ROUTE
-                        @else
-                            DELIVERY COMPLETED
-                        @endif
-                    </div>
-                    <div class="eta-display">
-                        <div class="eta-label">
-                            @if($shipment->status == 'Delivered')
-                            DELIVERED ON
-                            @else
-                            ESTIMATED DELIVERY
-                            @endif
-                        </div>
-                        <div class="eta-value">
-                            @if($shipment->status == 'Delivered')
-                            {{ now()->subHours(3)->format('d M Y H:i') }}
-                            @else
-                            {{ now()->addDays(2)->format('d M Y') }}
-                            @endif
-                        </div>
-                    </div>
+              <!-- Current Status -->
+<div class="current-status">
+    <!-- Status -->
+    <div class="status-label">Current Status</div>
+    <div class="status-main">
+        {{ $shipment->status }}
+    </div>
+
+    <!-- ETA / Destination -->
+    <div class="eta-display">
+        <div class="eta-label">Destination</div>
+        <div class="eta-value">
+            {{ $shipment->destination }}
+        </div>
+    </div>
+
+    <!-- Shipment Date -->
+    <div class="eta-display">
+        <div class="eta-label">Shipment Date</div>
+        <div class="eta-value">
+            {{ \Carbon\Carbon::parse($shipment->shipment_date)->format('D, M j, Y') }}
+        </div>
+    </div>
+</div>
+
                 </div>
             </div>
         </div>

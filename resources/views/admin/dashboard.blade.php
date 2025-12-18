@@ -28,6 +28,14 @@
             </div>
         </div>
 
+
+        @if(session('success'))
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>Success!</strong> {{ session('success') }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+@endif
+
         <!-- Stats Cards -->
         <div class="stats-grid">
             <div class="stat-card">
@@ -38,8 +46,8 @@
                     <h3>{{ $totalShipments }}</h3>
                     <p>Total Shipments</p>
                     <div class="stat-trend trend-up">
-                        <i class="bi bi-arrow-up"></i>
-                        <span>12% from last month</span>
+                       
+                        
                     </div>
                 </div>
             </div>
@@ -51,8 +59,7 @@
                     <h3>{{ $inTransit }}</h3>
                     <p>In Transit</p>
                     <div class="stat-trend trend-up">
-                        <i class="bi bi-arrow-up"></i>
-                        <span>8% from yesterday</span>
+                       
                     </div>
                 </div>
             </div>
@@ -64,8 +71,8 @@
                     <h3>{{ $delivered }}</h3>
                     <p>Delivered</p>
                     <div class="stat-trend trend-up">
-                        <i class="bi bi-arrow-up"></i>
-                        <span>15% from last month</span>
+                    
+                        
                     </div>
                 </div>
             </div>
@@ -77,34 +84,13 @@
                     <h3>{{ $booked }}</h3>
                     <p>Pending Bookings</p>
                     <div class="stat-trend trend-down">
-                        <i class="bi bi-arrow-down"></i>
-                        <span>5% from last week</span>
+            
                     </div>
                 </div>
             </div>
         </div>
 
-        {{-- <!-- Charts Section -->
-        <div class="charts-section">
-            <div class="chart-card">
-                <div class="chart-header">
-                    <h5>Shipment Volume</h5>
-                    <select class="form-select form-select-sm" style="width: auto;">
-                        <option>Last 7 days</option>
-                        <option selected>Last 30 days</option>
-                        <option>Last 90 days</option>
-                    </select>
-                </div>
-                <canvas id="shipmentChart" height="250"></canvas>
-            </div>
-            <div class="chart-card">
-                <div class="chart-header">
-                    <h5>Status Distribution</h5>
-                </div>
-                <canvas id="statusChart" height="250"></canvas>
-            </div>
-        </div> --}}
-
+       
         <!-- Quick Actions -->
         <div class="quick-actions">
             <h5>Quick Actions</h5>
@@ -176,21 +162,39 @@
                                 </span>
                             </td>
                             <td>{{ $shipment->updated_at }}</td>
-                            <td>
-                                <div class="action-buttons">
-                                    <a href="{{ route('admin.shipments.show', $shipment->id) }}" 
-                                       class="btn btn-sm btn-outline-primary btn-icon" 
-                                       title="View">
-                                        <i class="bi bi-eye"></i>
-                                    </a>
-                                    <a href="#" class="btn btn-sm btn-outline-secondary btn-icon" title="Edit">
-                                        <i class="bi bi-pencil"></i>
-                                    </a>
-                                    <a href="#" class="btn btn-sm btn-outline-danger btn-icon" title="Cancel">
-                                        <i class="bi bi-x-circle"></i>
-                                    </a>
-                                </div>
-                            </td>
+           <td>
+    <div class="d-flex gap-1 flex-wrap">
+        <!-- View Shipment -->
+        <a href="{{ route('admin.shipments.show', $shipment->id) }}" 
+           class="btn btn-sm btn-primary" 
+           title="View">
+            <i class="bi bi-eye me-1"></i> View
+        </a>
+
+        <!-- Edit Shipment -->
+        <a href="{{ route('shipment.edit', $shipment->id) }}"
+           class="btn btn-sm btn-primary">
+            <i class="bi bi-pencil-square me-1"></i> Edit
+        </a>
+
+        <!-- Update Shipping History -->
+        <a href="{{ route('shipment.history.edit', $shipment->id) }}"
+           class="btn btn-sm btn-primary">
+            <i class="bi bi-clock-history me-1"></i> Update History
+        </a>
+
+        <!-- Delete Shipment -->
+        <form action="{{ route('shipment.destroy', $shipment->id) }}" method="POST"
+              onsubmit="return confirm('Are you sure you want to delete this shipment?')">
+            @csrf
+            @method('DELETE')
+            <button class="btn btn-sm btn-danger">
+                <i class="bi bi-trash me-1"></i> Delete
+            </button>
+        </form>
+    </div>
+</td>
+
                         </tr>
                         @empty
                         <tr>

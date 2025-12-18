@@ -43,7 +43,7 @@ class AdminShipmentController extends Controller
     public function updateStatus(Request $request, $id)
     {
         $request->validate([
-            'status' => 'required|in:Booked,In Transit,Delivered,Cancelled',
+            'status' => 'required|string',
         ]);
 
         $shipment = Shipment::findOrFail($id);

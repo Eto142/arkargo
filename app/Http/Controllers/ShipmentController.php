@@ -75,6 +75,7 @@ class ShipmentController extends Controller
 public function store(Request $request)
 {
     $validated = $request->validate([
+         'status' => 'required|string',
         'origin' => 'required|string',
         'destination' => 'required|string',
         'shipment_date' => 'required|date',
@@ -90,12 +91,14 @@ public function store(Request $request)
         'shipper_city' => 'required|string',
         'shipper_country' => 'required|string',
         'shipper_phone' => 'required|string',
+        'origin_airport' => 'required|string',
 
         'receiver_company' => 'required|string',
         'receiver_contact' => 'required|string',
         'receiver_address' => 'required|string',
         'receiver_city' => 'required|string',
         'receiver_country' => 'required|string',
+        'destination_airport' => 'required|string',
 
         'pieces' => 'required|integer|min:1',
         'gross_weight' => 'required|numeric',
@@ -154,7 +157,8 @@ public function store(Request $request)
 
 
 
-   // Process tracking request
+
+    // Process tracking request
 public function track(Request $request)
 {
     $request->validate([
@@ -169,8 +173,102 @@ public function track(Request $request)
         return back()->withErrors(['awb_number' => 'Shipment not found']);
     }
 
-    return view('shipment.home', compact('shipment'));
+    // Fetch shipping history, order by date & time
+    $history = $shipment->history()->orderBy('date')->orderBy('time')->get();
+
+    return view('shipment.home', compact('shipment', 'history'));
 }
+
+
+//    // Process tracking request
+// public function track(Request $request)
+// {
+//     $request->validate([
+//         'awb_number' => 'required|exists:shipments,awb_number',
+//     ]);
+
+//     // Get the shipment
+//     $shipment = Shipment::where('awb_number', $request->awb_number)->first();
+
+//     // If somehow $shipment is null (shouldn't happen because of validation)
+//     if (!$shipment) {
+//         return back()->withErrors(['awb_number' => 'Shipment not found']);
+//     }
+
+//     return view('shipment.home', compact('shipment'));
+// }
+
+
+// Delete shipment
+public function destroy($id)
+{
+    $shipment = Shipment::findOrFail($id);
+
+    // Delete attached PDF if it exists
+    if ($shipment->awb_number) {
+        $pdfPath = 'shipments/awb_' . $shipment->awb_number . '.pdf';
+        if (Storage::disk('public')->exists($pdfPath)) {
+            Storage::disk('public')->delete($pdfPath);
+        }
+    }
+
+    $shipment->delete();
+
+    return redirect()
+        ->back()
+        ->with('success', 'Shipment deleted successfully.');
+}
+
+
+
+
+
+// Show edit form
+public function edit($id)
+{
+    $shipment = Shipment::findOrFail($id);
+    return view('admin.shipments.edit', compact('shipment'));
+}
+
+// Update shipment
+public function update(Request $request, $id)
+{
+    $shipment = Shipment::findOrFail($id);
+
+    $validated = $request->validate([
+        'origin' => 'required|string',
+        'destination' => 'required|string',
+        'shipment_date' => 'required|date',
+        'shipment_type' => 'required|string',
+
+        'shipper_company' => 'required|string',
+        'shipper_contact' => 'required|string',
+        'shipper_address' => 'required|string',
+        'shipper_city' => 'required|string',
+        'shipper_country' => 'required|string',
+        'shipper_phone' => 'required|string',
+        'origin_airport' => 'required|string',
+
+        'receiver_company' => 'required|string',
+        'receiver_contact' => 'required|string',
+        'receiver_address' => 'required|string',
+        'receiver_city' => 'required|string',
+        'receiver_country' => 'required|string',
+         'destination_airport' => 'required|string',
+
+        'pieces' => 'required|integer|min:1',
+        'gross_weight' => 'required|numeric',
+        'chargeable_weight' => 'required|numeric',
+        'goods_description' => 'required|string',
+    ]);
+
+    $shipment->update($validated);
+
+    return redirect()
+        ->back()
+        ->with('success', 'Shipment updated successfully.');
+}
+
 
   
 }

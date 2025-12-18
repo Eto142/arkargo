@@ -591,7 +591,7 @@
             <div class="nav-item">
                 <a href="#" class="nav-link">
                     <i class="bi bi-gear nav-icon"></i>
-                    <span class="nav-text">Settings</span>
+                    <span class="nav-text">All contacts</span>
                 </a>
             </div>
         </div>

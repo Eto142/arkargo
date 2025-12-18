@@ -32,6 +32,7 @@ class Shipment extends Model
         'shipper_city',
         'shipper_country',
         'shipper_phone',
+        'origin_airport',
 
         // Receiver
         'receiver_company',
@@ -39,6 +40,7 @@ class Shipment extends Model
         'receiver_address',
         'receiver_city',
         'receiver_country',
+        'destination_airport',
 
         // Cargo
         'pieces',
@@ -80,4 +82,15 @@ class Shipment extends Model
     protected $hidden = [
         'id',
     ];
+
+    public function histories()
+{
+    return $this->hasMany(ShipmentHistory::class)->orderBy('date', 'desc')->orderBy('time', 'desc');
+}
+
+public function history()
+    {
+        return $this->hasMany(ShipmentHistory::class, 'shipment_id');
+    }
+
 }

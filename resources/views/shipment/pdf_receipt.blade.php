@@ -21,7 +21,7 @@
 <body>
 
 <div class="header">
-    <img src="{{ public_path('images/logo.png') }}" class="logo" alt="Company Logo">
+    <img src="{{ public_path('logo.png') }}" class="logo" alt="Company Logo">
     <h2>Shipment Receipt</h2>
     <p>AWB Number: <strong>{{ $shipment->awb_number }}</strong></p>
 </div>
@@ -58,6 +58,7 @@
         <tr><th>City</th><td>{{ $shipment->shipper_city }}</td></tr>
         <tr><th>Country</th><td>{{ $shipment->shipper_country }}</td></tr>
         <tr><th>Phone</th><td>{{ $shipment->shipper_phone }}</td></tr>
+        <tr><th>Origin Airport </th><td>{{ $shipment->origin_airport }}</td></tr>
     </table>
 </div>
 
@@ -69,6 +70,7 @@
         <tr><th>Address</th><td>{{ $shipment->receiver_address }}</td></tr>
         <tr><th>City</th><td>{{ $shipment->receiver_city }}</td></tr>
         <tr><th>Country</th><td>{{ $shipment->receiver_country }}</td></tr>
+         <tr><th>Destination Airport </th><td>{{ $shipment->destination_airport }}</td></tr>
     </table>
 </div>
 

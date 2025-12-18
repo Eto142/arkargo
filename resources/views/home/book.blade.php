@@ -201,6 +201,7 @@
             </div>
         </div>
 
+
         {{-- Payment & Insurance --}}
         <div class="card mb-4 shadow-sm border-secondary">
             <div class="card-header bg-light text-dark">Payment & Insurance</div>

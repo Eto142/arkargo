@@ -15,6 +15,7 @@
     </div>
 
     <!-- Status & Action Row -->
+    <h5 class="mb-3">Status</h5>
     <div class="stat-card mb-4">
         <div class="d-flex flex-wrap justify-content-between align-items-center gap-3">
 
@@ -24,11 +25,15 @@
 
             <form action="{{ route('admin.shipments.status', $shipment->id) }}" method="POST" class="d-flex gap-2">
                 @csrf
-                <select name="status" class="form-select form-select-sm">
-                    <option value="Booked" {{ $shipment->status == 'Booked' ? 'selected' : '' }}>Booked</option>
-                    <option value="In Transit" {{ $shipment->status == 'In Transit' ? 'selected' : '' }}>In Transit</option>
-                    <option value="Delivered" {{ $shipment->status == 'Delivered' ? 'selected' : '' }}>Delivered</option>
-                </select>
+               
+    <input
+        type="text"
+        name="status"
+        class="form-control form-control-sm"
+        value="{{ $shipment->status }}"
+        placeholder="Enter shipment status"
+        required
+    >
                 <button class="btn btn-primary btn-sm">
                     Update
                 </button>
@@ -90,34 +95,36 @@
         </div>
 
         <!-- Shipper -->
-        <div class="col-lg-6">
-            <div class="stat-card">
-                <h5 class="mb-3">Shipper</h5>
+      <div class="col-lg-6">
+    <div class="stat-card">
+        <h5 class="mb-3">Shipper</h5>
 
-                <p class="mb-1"><strong>{{ $shipment->shipper_company }}</strong></p>
-                <p class="mb-1">{{ $shipment->shipper_contact }}</p>
-                <p class="mb-0 text-muted">
-                    {{ $shipment->shipper_address }},
-                    {{ $shipment->shipper_city }},
-                    {{ $shipment->shipper_country }}
-                </p>
-            </div>
-        </div>
+        <p class="mb-1"><strong>Company:</strong> {{ $shipment->shipper_company }}</p>
+        <p class="mb-1"><strong>Contact:</strong> {{ $shipment->shipper_contact }}</p>
+        <p class="mb-0 text-muted">
+            <strong>Address:</strong> {{ $shipment->shipper_address }}, 
+            {{ $shipment->shipper_city }}, 
+            {{ $shipment->shipper_country }}<br>
+            <strong>Origin Airport:</strong> {{ $shipment->origin_airport }}
+        </p>
+    </div>
+</div>
 
-        <!-- Receiver -->
-        <div class="col-lg-6">
-            <div class="stat-card">
-                <h5 class="mb-3">Receiver</h5>
+<!-- Receiver -->
+<div class="col-lg-6">
+    <div class="stat-card">
+        <h5 class="mb-3">Receiver</h5>
 
-                <p class="mb-1"><strong>{{ $shipment->receiver_company }}</strong></p>
-                <p class="mb-1">{{ $shipment->receiver_contact }}</p>
-                <p class="mb-0 text-muted">
-                    {{ $shipment->receiver_address }},
-                    {{ $shipment->receiver_city }},
-                    {{ $shipment->receiver_country }}
-                </p>
-            </div>
-        </div>
+        <p class="mb-1"><strong>Company:</strong> {{ $shipment->receiver_company }}</p>
+        <p class="mb-1"><strong>Contact:</strong> {{ $shipment->receiver_contact }}</p>
+        <p class="mb-0 text-muted">
+            <strong>Address:</strong> {{ $shipment->receiver_address }}, 
+            {{ $shipment->receiver_city }}, 
+            {{ $shipment->receiver_country }}<br>
+            <strong>Destination Airport:</strong> {{ $shipment->destination_airport }}
+        </p>
+    </div>
+</div>
 
         <!-- Financials -->
         <div class="col-12">
