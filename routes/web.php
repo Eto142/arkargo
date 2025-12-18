@@ -58,6 +58,10 @@ Route::put('/shipment/{id}', [ShipmentController::class, 'update'])
     ->name('shipment.update');
 
 
+    Route::get('/shipment/download/{awb}', [ShipmentController::class, 'downloadPdf'])
+    ->name('shipment.download');
+
+
 
 // Show shipment history page
 Route::get('/shipment/{shipment}/history', [ShipmentHistoryController::class, 'edit'])

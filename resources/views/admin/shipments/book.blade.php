@@ -251,6 +251,7 @@
 
 
 
+
 <!-- AWB Success Modal -->
 @if(session('awb_number'))
 <div class="modal fade show awb-success-modal" id="awbModal" tabindex="-1" aria-modal="true" role="dialog" style="display:block;">
@@ -300,6 +301,20 @@
 </script>
 @endif
 
+
+<script>
+    // Trigger PDF download automatically
+    document.addEventListener('DOMContentLoaded', function () {
+        @if(session('pdf_path'))
+        const link = document.createElement('a');
+        link.href = "{{ session('pdf_path') }}";
+        link.download = "awb_{{ session('awb_number') }}.pdf";
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        @endif
+    });
+</script>
 
 <style>
 
