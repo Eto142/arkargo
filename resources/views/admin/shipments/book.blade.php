@@ -33,7 +33,7 @@
 
             <div class="row g-3">
 
-                div class="col-md-4">
+                <div class="col-md-4">
                     <label class="form-label">Cargo Tracking NO</label>
                     <input type="text" name="awb_number" class="form-control" required>
                 </div>
