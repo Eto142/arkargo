@@ -23,7 +23,7 @@
 
             <!-- Body -->
             <div style="padding: 25px;">
-                <h2 style="color: #333333; font-size: 20px; margin-bottom: 15px;">{{ $subjectLine }}</h2>
+                {{-- <h2 style="color: #333333; font-size: 20px; margin-bottom: 15px;">{{ $subjectLine }}</h2> --}}
                 <p style="font-size: 15px; line-height: 1.6; color: #555555; margin-bottom: 15px;">
                     {!! nl2br(e($bodyMessage)) !!}
                 </p>
