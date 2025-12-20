@@ -12,6 +12,11 @@ Route::middleware('web')->prefix('admin')->name('admin.')->group(function () {
     Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
     Route::post('/login', [AuthController::class, 'login'])->name('login.submit');
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+        Route::get('/admin/change-password', [AuthController::class, 'showChangePassword'])
+        ->name('change.password');
+
+    Route::post('/admin/change-password', [AuthController::class, 'updatePassword'])
+        ->name('change.password.post');
 
     // Protected routes
     Route::middleware('auth:admin')->group(function () {
@@ -20,6 +25,7 @@ Route::middleware('web')->prefix('admin')->name('admin.')->group(function () {
         Route::get('/book', [AdminShipmentController::class, 'bookcargo'])->name('book');
         Route::get('/shipments/{shipment}', [AdminShipmentController::class, 'show'])->name('shipments.show');
         Route::post('/shipments/{shipment}/status', [AdminShipmentController::class, 'updateStatus'])->name('shipments.status');
+        
     });
 
 

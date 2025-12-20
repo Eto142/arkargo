@@ -207,8 +207,12 @@ public function track(Request $request)
         return back()->withErrors(['awb_number' => 'Shipment not found']);
     }
 
-    // Fetch shipping history, order by date & time
-    $history = $shipment->history()->orderBy('date')->orderBy('time')->get();
+   // Fetch shipping history, latest first (top)
+$history = $shipment->history()
+    ->orderBy('date', 'desc')
+    ->orderBy('time', 'desc')
+    ->get();
+
 
     return view('shipment.home', compact('shipment', 'history'));
 }

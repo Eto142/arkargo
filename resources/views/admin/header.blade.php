@@ -589,9 +589,9 @@
                 </a>
             </div> --}}
             <div class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{ route('admin.change.password') }}" class="nav-link">
                     <i class="bi bi-gear nav-icon"></i>
-                    <span class="nav-text">All contacts</span>
+                    <span class="nav-text">Change Password</span>
                 </a>
             </div>
         </div>
