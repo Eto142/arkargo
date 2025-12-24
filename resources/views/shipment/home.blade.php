@@ -736,7 +736,7 @@
                     </div>
                     <div class="panel-subtitle">LIVE UPDATES</div>
                 </div>
-
+{{-- 
                <div class="timeline-container">
     <div class="timeline-line"></div>
     <div class="timeline-progress" id="timelineProgress"></div>
@@ -761,7 +761,107 @@
     @endforelse
 </div>
 
+                </div> --}}
+
+
+
+                <div class="timeline-container">
+    <div class="timeline-line"></div>
+    <div class="timeline-progress"></div>
+
+    @forelse($history as $item)
+        <div class="timeline-item">
+            <div class="timeline-dot
+                @if($loop->first)
+                    active   {{-- latest = blue --}}
+                @else
+                    completed {{-- previous = green --}}
+                @endif
+            ">
+                @unless($loop->first)
+                    <i class="bi bi-check"></i>
+                @endunless
+            </div>
+
+            <div class="timeline-content">
+                <div class="timeline-title">{{ $item->status }}</div>
+                <div class="timeline-subtitle">
+                    {{ $item->remarks }} - {{ $item->location }}
                 </div>
+                <div class="timeline-time">
+                    {{ \Carbon\Carbon::parse($item->date.' '.$item->time)->format('d M Y, H:i') }} UTC
+                </div>
+            </div>
+        </div>
+    @empty
+        <p>No tracking history available yet.</p>
+    @endforelse
+</div>
+
+</div>
+
+
+<style>
+
+    .timeline-container {
+    position: relative;
+    padding-left: 40px;
+}
+
+.timeline-line {
+    position: absolute;
+    left: 15px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: #e5e7eb; /* light gray base */
+}
+
+.timeline-item {
+    display: flex;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.timeline-dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #9ca3af; /* default gray */
+    position: absolute;
+    left: 8px;
+    top: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+}
+
+/* Latest update → BLUE */
+.timeline-dot.active {
+    background: #2563eb;
+}
+
+/* Previous updates → GREEN */
+.timeline-dot.completed {
+    background: #16a34a;
+    color: #fff;
+    font-size: 10px;
+}
+
+/* Green line for completed steps */
+.timeline-item:not(:first-child)::before {
+    content: '';
+    position: absolute;
+    left: 14px;
+    top: -30px;
+    width: 2px;
+    height: 30px;
+    background: #16a34a;
+}
+
+</style>
+
 
               <!-- Current Status -->
 <div class="current-status">
