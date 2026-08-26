@@ -12,19 +12,27 @@ class AdminSendMail extends Mailable
 
     public $subjectLine;
     public $bodyMessage;
+    public $attachmentPath;
 
-    public function __construct($subjectLine, $bodyMessage)
+    public function __construct($subjectLine, $bodyMessage, $attachmentPath = null)
     {
         $this->subjectLine = $subjectLine;
         $this->bodyMessage = $bodyMessage;
+        $this->attachmentPath = $attachmentPath;
     }
 
     public function build()
     {
-        return $this->subject($this->subjectLine)
+        $mail = $this->subject($this->subjectLine)
                     ->view('emails.admin-send')
                     ->with([
                         'bodyMessage' => $this->bodyMessage
                     ]);
+
+        if ($this->attachmentPath) {
+            $mail->attach($this->attachmentPath);
+        }
+
+        return $mail;
     }
 }

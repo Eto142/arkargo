@@ -29,7 +29,7 @@
     @endif
 
     {{-- Email Form --}}
-    <form action="{{ route('admin.send.email.post') }}" method="POST" style="display: flex; flex-direction: column; gap: 15px;">
+    <form action="{{ route('admin.send.email.post') }}" method="POST" enctype="multipart/form-data" style="display: flex; flex-direction: column; gap: 15px;">
         @csrf
 
         <div>
@@ -59,12 +59,44 @@
             @enderror
         </div>
 
-        <button type="submit" 
+        <div>
+            <label style="font-weight: bold;">Attachment (image or file)</label>
+            <input type="file" name="attachment"
+                style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+            @error('attachment')
+                <small style="color:red;">{{ $message }}</small>
+            @enderror
+        </div>
+
+        <button type="submit"
             style="background: #28a745; color: white; padding: 12px; border: none; border-radius: 5px; font-size: 16px; cursor: pointer;">
             Send Email
         </button>
     </form>
 
+    </div>
+
+    <!-- Sent Emails History -->
+    <div class="stat-card" style="margin-top: 20px;">
+        <h2 style="margin-bottom: 15px;">Sent Emails</h2>
+
+        @forelse($sentEmails as $sentEmail)
+            <div style="border-bottom: 1px solid #eee; padding: 12px 0;">
+                <div style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 5px;">
+                    <strong>{{ $sentEmail->subject }}</strong>
+                    <span class="text-muted" style="font-size: 13px;">{{ $sentEmail->created_at->format('M d, Y h:i A') }}</span>
+                </div>
+                <div class="text-muted" style="font-size: 13px; margin-top: 2px;">To: {{ $sentEmail->to }}</div>
+                <p style="margin-top: 8px; white-space: pre-line;">{{ $sentEmail->message }}</p>
+                @if($sentEmail->attachment)
+                    <a href="{{ asset('storage/' . $sentEmail->attachment) }}" target="_blank" style="font-size: 13px;">
+                        📎 View attachment
+                    </a>
+                @endif
+            </div>
+        @empty
+            <p class="text-muted mb-0">No emails sent yet.</p>
+        @endforelse
     </div>
 
 </div>
