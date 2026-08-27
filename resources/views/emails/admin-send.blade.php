@@ -29,10 +29,20 @@
                 </p>
 
                 @if(!empty($attachmentData) && !empty($attachmentMime))
-                    <div style="margin-top: 15px; text-align: center;">
-                        <img src="{{ $message->embedData($attachmentData, $attachmentName, $attachmentMime) }}"
-                             alt="{{ $attachmentName }}"
-                             style="max-width: 100%; height: auto; border-radius: 6px;">
+                    <div style="margin-top: 20px; text-align: center;">
+                        <table role="presentation" border="0" cellpadding="0" cellspacing="0" align="center" style="margin: 0 auto; max-width: 280px; width: 100%;">
+                            <tr>
+                                <td style="background: #f8f9fb; border: 1px solid #e6e8ec; border-radius: 10px; padding: 10px;">
+                                    <img src="{{ $message->embedData($attachmentData, $attachmentName, $attachmentMime) }}"
+                                         alt="{{ $attachmentName }}"
+                                         width="260"
+                                         style="width: 100%; max-width: 260px; height: auto; display: block; margin: 0 auto; border-radius: 6px;">
+                                    @if($attachmentName)
+                                        <p style="margin: 8px 0 0; font-size: 12px; color: #999999; word-break: break-all;">{{ $attachmentName }}</p>
+                                    @endif
+                                </td>
+                            </tr>
+                        </table>
                     </div>
                 @elseif(!empty($attachmentName))
                     <p style="font-size: 13px; color: #777777;">📎 Attached: {{ $attachmentName }}</p>
