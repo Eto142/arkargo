@@ -582,6 +582,12 @@
                     <span class="nav-text">Send Email</span>
                 </a>
             </div>
+            <div class="nav-item">
+                <a href="{{ route('admin.sent.emails') }}" class="nav-link">
+                    <i class="bi bi-envelope-check nav-icon"></i>
+                    <span class="nav-text">Sent Emails</span>
+                </a>
+            </div>
             {{-- <div class="nav-item">
                 <a href="#" class="nav-link">
                     <i class="bi bi-bar-chart nav-icon"></i>

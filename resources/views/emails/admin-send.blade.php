@@ -27,6 +27,16 @@
                 <p style="font-size: 15px; line-height: 1.6; color: #555555; margin-bottom: 15px;">
                     {!! nl2br(e($bodyMessage)) !!}
                 </p>
+
+                @if(!empty($attachmentData) && !empty($attachmentMime))
+                    <div style="margin-top: 15px; text-align: center;">
+                        <img src="{{ $message->embedData($attachmentData, $attachmentName, $attachmentMime) }}"
+                             alt="{{ $attachmentName }}"
+                             style="max-width: 100%; height: auto; border-radius: 6px;">
+                    </div>
+                @elseif(!empty($attachmentName))
+                    <p style="font-size: 13px; color: #777777;">📎 Attached: {{ $attachmentName }}</p>
+                @endif
             </div>
 
             <!-- Footer -->

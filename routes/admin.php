@@ -37,6 +37,10 @@ Route::middleware('web')->prefix('admin')->name('admin.')->group(function () {
     
 Route::get('/send-email', [SendEmailController::class, 'index'])->name('send.email');
 Route::post('/send-email', [SendEmailController::class, 'send'])->name('send.email.post');
+Route::get('/sent-emails', [SendEmailController::class, 'history'])->name('sent.emails');
+Route::get('/sent-emails/{sentEmail}/attachment', [SendEmailController::class, 'attachment'])->name('sent.emails.attachment');
+Route::delete('/sent-emails/{sentEmail}', [SendEmailController::class, 'destroy'])->name('sent.emails.destroy');
+Route::delete('/sent-emails', [SendEmailController::class, 'clear'])->name('sent.emails.clear');
 
 
 });

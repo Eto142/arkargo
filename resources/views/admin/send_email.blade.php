@@ -6,11 +6,15 @@
 <div class="main-content">
 
     <!-- Page Header -->
-    <div class="page-header">
+    <div class="page-header" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
         <div>
             <h1>Send Email</h1>
             <p class="text-muted mb-0">Compose and send emails to customers or partners</p>
         </div>
+        <a href="{{ route('admin.sent.emails') }}"
+            style="background: #f0f0f0; color: #333; padding: 10px 16px; border-radius: 5px; text-decoration: none; font-size: 14px;">
+            View Sent Emails
+        </a>
     </div>
 
     <!-- Email Card -->
@@ -74,29 +78,6 @@
         </button>
     </form>
 
-    </div>
-
-    <!-- Sent Emails History -->
-    <div class="stat-card" style="margin-top: 20px;">
-        <h2 style="margin-bottom: 15px;">Sent Emails</h2>
-
-        @forelse($sentEmails as $sentEmail)
-            <div style="border-bottom: 1px solid #eee; padding: 12px 0;">
-                <div style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 5px;">
-                    <strong>{{ $sentEmail->subject }}</strong>
-                    <span class="text-muted" style="font-size: 13px;">{{ $sentEmail->created_at->format('M d, Y h:i A') }}</span>
-                </div>
-                <div class="text-muted" style="font-size: 13px; margin-top: 2px;">To: {{ $sentEmail->to }}</div>
-                <p style="margin-top: 8px; white-space: pre-line;">{{ $sentEmail->message }}</p>
-                @if($sentEmail->attachment)
-                    <a href="{{ asset('storage/' . $sentEmail->attachment) }}" target="_blank" style="font-size: 13px;">
-                        📎 View attachment
-                    </a>
-                @endif
-            </div>
-        @empty
-            <p class="text-muted mb-0">No emails sent yet.</p>
-        @endforelse
     </div>
 
 </div>
