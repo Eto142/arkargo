@@ -40,7 +40,7 @@
                 <div class="card shadow-sm bg-light">
                     <div class="card-header"><strong>Send us a message</strong></div>
                     <div class="card-body">
-                        <form method="POST" action="{{ route('contact.submit') }}">
+                        <form id="contactForm" method="POST" action="{{ route('contact.submit') }}">
                             @csrf
                             <div class="row g-3">
                                 <div class="col-md-6">
@@ -72,12 +72,32 @@
 • Preferred departure date" class="form-control" required>{{ old('message') }}</textarea>
                                 </div>
                                 <div class="col-12">
-                                    <button class="btn btn-dark w-100">Send Message</button>
+                                    <button type="submit" class="btn btn-dark w-100">Send Message</button>
+                                </div>
+
+                                {{-- Honeypot field (hidden from users, visible to bots) --}}
+                                <div style="position: absolute; left: -10000px; top: auto; width: 1px; height: 1px; overflow: hidden;" aria-hidden="true">
+                                    <label for="website">Leave this field empty</label>
+                                    <input id="website" name="website" type="text" autocomplete="off" tabindex="-1">
                                 </div>
                             </div>
                         </form>
                     </div>
                 </div>
+
+                        <script>
+                            (function() {
+                                var form = document.getElementById('contactForm');
+                                if (!form) return;
+                                form.addEventListener('submit', function(e) {
+                                    var btn = form.querySelector('button[type=submit]');
+                                    if (btn) {
+                                        btn.disabled = true;
+                                        btn.innerText = 'Sending...';
+                                    }
+                                });
+                            })();
+                        </script>
 
             </div>
         </div>

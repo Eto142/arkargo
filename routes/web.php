@@ -88,5 +88,7 @@ Route::delete('/shipment/history/{history}', [ShipmentHistoryController::class, 
 
 // contact route
 
-Route::post('/contact', [ContactController::class, 'submit'])->name('contact.submit');
+Route::post('/contact', [ContactController::class, 'submit'])
+    ->name('contact.submit')
+    ->middleware('throttle:contact');
 
